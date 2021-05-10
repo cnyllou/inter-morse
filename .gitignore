@@ -1,0 +1,6 @@
+# Folders
+data
+data/**
+
+# Files
+denoising.py
