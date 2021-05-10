@@ -47,10 +47,16 @@ decode_group = subparsers.add_parser('decode', help='Decode morse code')
 decode_group.add_argument('-d', '--dit', help='DIT value in milliseconds', type=int, default=100)
 decode_group.add_argument('-p', '--plot', help='Plot the pulses.', action='store_true')
 
-for dir in DIRS:
+# ======== Some Functions ======== #
+def makedirs(dirs):
+    for dir in dirs:
+        os.makedirs(dir, exist_ok=True)
+
+
+def makedir(dir):
     os.makedirs(dir, exist_ok=True)
 
-# ======== Some Functions ======== #
+
 def myprint(str, level=0):
     if (level >= PRINT_LEVEL):
         print(str)
@@ -224,6 +230,8 @@ class AudioCleaner():
             silence_segments = [self.sound[min:max] for min, max in detected_silence]
             # final_silence = silence_segments[0][0]
 
+            makedir(PROFILE_DIR)
+
             for i, seg in enumerate(silence_segments):
                 silence_file = os.path.join(PROFILE_DIR, f"silence-{i}-{self.audio_file}")
                 silence_dict[silence_file] = seg
@@ -272,6 +280,7 @@ class AudioCleaner():
             output = subprocess.check_output(cmd, shell=True)
             myprint(output, 1)
 
+            makedir(EXPORT_DIR)
             out_file = os.path.join(EXPORT_DIR, f"{prefix}-cleaned-{self.audio_file}")
             myprint(f"> Exporting -> {out_file}", 2)
 
@@ -318,7 +327,7 @@ def main():
 
 if __name__ == '__main__':
     args = parser.parse_args()
-    print(args)
+    #print(args)
     PRINT_LEVEL = args.level
     main()
 

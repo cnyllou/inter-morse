@@ -9,7 +9,7 @@ This script has 2 feature, one is a decoder, the other one is an unnecessary one
 ### Usage
 
 ```bash
-usage: morse-audio-decoder.py [-h] [-l LEVEL] {clean,decode} ... file
+usage: python -m inter_morse [-h] [-l LEVEL] {clean,decode} ... file
 
 positional arguments:
   {clean,decode}        Commands for the decoder
