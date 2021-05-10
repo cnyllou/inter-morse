@@ -2,28 +2,7 @@
 
 ---------------
 
-There are 2 scripts, one is a re-written one in Python 3 `morse-to-text-python3.py` and the other one is written by me from scratch.
-
-**morse-to-text-python3.py**
-
-This script has been based on some Python 2 code I found searching for this decoder, it was found on stackoverflow post mentioning [this link](https://code.google.com/archive/p/morse-to-text/).
-
-I haven't fully investigated the workings, but here is the principals.
-
-1. Takes in a `.wav` file
-2. Runs a Fourier Transform on it `numpy.fft.rfft` numpy functions
-- I think this is for cleaning up the audio
-3. Looks for pulses and generates a plot
-4. Translates the pulses to Morse code
-5. Then using the `codes.csv` file, translates the Morse code
-
-It generates a plot after every step of the process and you can see all of them in the `report.html`.
-
-I couldn't understand that much of it, but I at least remade it in Python 3 (although I could have started at first from scratch), either it was too complicated for me or poorly written. (Not that I think I did better.)
-
-The original file is `morse-to-text.py`, it includes usage with command line arguments (mine remake doesn't).
-
-## morse-audio-decoder.py
+## inter-morse.py
 
 This script has 2 feature, one is a decoder, the other one is an unnecessary one, noise reduction feature, that uses `sox` *nix utility.
 
@@ -94,6 +73,6 @@ I thought I needed this feature, but will maybe improve it later, haven't tested
 
 ## Resources
 
-- [Good online decoder.](https://morsecode.world/international/decoder/audio-decoder-adaptive.html) also explains how it works.
+- [Good online decoder](https://morsecode.world/international/decoder/audio-decoder-adaptive.html) also explains how it works.
 - [Morse code generator](https://morsecode.world/international/translator.html) that I used for generating some samples.
 - [In depth about Morse code](https://en.wikipedia.org/wiki/Morse_code#:~:text=For%20instance%2C%20%22Q%22%20in,%22Did%20she%20like%20it.%22)
